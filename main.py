@@ -369,7 +369,7 @@ If you need help, join our [Support Group](https://t.me/your_support_group).
     update.message.reply_text(help_text, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
 # Register the command handler
-updater.dispatcher.add_handler(CommandHandler('help', help_command))
+dispatcher.add_handler(CommandHandler('help', help_command))
 
 @app.on_message(filters.command("id"))
 async def userid(client, message):
