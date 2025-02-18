@@ -344,6 +344,33 @@ def get_id(update: Update, context: CallbackContext):
                 f"ᴛʜɪs ɢʀᴏᴜᴩ's ɪᴅ ɪs <code>{chat.id}</code>.", parse_mode=ParseMode.HTML
             )
 
+def help_command(update: Update, context: CallbackContext):
+    help_text = """
+<b>🤖 AutoDelete Bot Help Menu</b>
+
+/start - Start the bot
+/help - View all available commands
+/addsudo <user_id/username> - Add a new Sudo User
+/sudolist - View the list of all Sudo Users
+/id <username> - Get Telegram ID of a user
+/stats - View the total number of users and groups using the bot
+/clone - Clone a user’s profile
+(and more features...)
+
+<b>⚙️ AutoDelete Feature:</b>
+- Automatically deletes edited messages (except for owner and sudo users).
+
+<b>👤 Sudo Users:</b>
+- Sudo users can access various admin-level commands.
+
+<b>📞 Support:</b>
+If you need help, join our [Support Group](https://t.me/your_support_group).
+"""
+    update.message.reply_text(help_text, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
+
+# Register the command handler
+updater.dispatcher.add_handler(CommandHandler('help', help_command))
+
 @app.on_message(filters.command("id"))
 async def userid(client, message):
     chat = message.chat
